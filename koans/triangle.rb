@@ -14,7 +14,12 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  triangles = {3 => :scalene, 2 => :isosceles, 1 => :equilateral}
+  sides = a, b, c
+  raise TriangleError if sides.any? { |x| x <= 0 }
+  uniq_lengths = [a, b, c].uniq.count
+  raise TriangleError if sides.sort[0,2].inject(:+) <= sides.max
+  triangles[uniq_lengths]
 end
 
 # Error class used in part 2.  No need to change this code.
